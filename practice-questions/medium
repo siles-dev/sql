@@ -1,0 +1,21 @@
+Show unique birth years from patients and order them by ascending.
+
+    SELECT DISTINCT(SUBSTRING(birth_date, 1, 4))
+    FROM patients
+    ORDER BY birth_date ASC;
+
+    or
+
+    SELECT DISTINCT YEAR(birth_date) AS birth_year
+    FROM patients
+    ORDER BY birth_year;
+
+Show unique first names from the patients table which only occurs once in the list.
+Ex: If two or more people are named 'John' in the first_name column then don't include their name in the output list.
+If only 1 person is named 'Leo' then include them in the output.
+
+    SELECT first_name
+    FROM patients
+    GROUP BY first_name
+    HAVING COUNT(first_name) = 1;
+
